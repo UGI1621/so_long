@@ -6,11 +6,20 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 01:34:25 by saan              #+#    #+#             */
-/*   Updated: 2025/04/16 09:34:41 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/17 01:14:08 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	print_cnt_move(int cnt)
+{
+	char	*temp;
+
+	temp = ft_itoa(cnt);
+	ft_putendl_fd(temp, 1);
+	free(temp);
+}
 
 void	free_2_ptr(char **ptr)
 {

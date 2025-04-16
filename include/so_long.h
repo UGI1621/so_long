@@ -6,7 +6,7 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 19:13:28 by saan              #+#    #+#             */
-/*   Updated: 2025/04/16 23:54:39 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/17 01:15:09 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ void	print_map(t_game *game);
 
 int		key_press(int keycode, t_game *game);
 int		user_key_press(int keycode, t_game *game);
+
+void	print_cnt_move(int cnt);
 
 void	move_up(t_game *game);
 void	move_right(t_game *game);

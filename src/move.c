@@ -6,7 +6,7 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 21:37:50 by saan              #+#    #+#             */
-/*   Updated: 2025/04/17 00:42:30 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/17 01:14:44 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ void	move_up(t_game *game)
 		game->map_info.map_blocks[game->map_info.player_y + 1][game->map_info.player_x] = '0';
 		game->map_info.map_blocks[game->map_info.player_y][game->map_info.player_x] = 'P';
 		game->map_info.cnt_move++;
-		temp = ft_itoa(game->map_info.cnt_move);
-		ft_putendl_fd(temp, 1);
+		print_cnt_move(game->map_info.cnt_move);
 	}
 	do_print_map(game, "up");
 }
@@ -72,8 +71,7 @@ void	move_right(t_game *game)
 		game->map_info.map_blocks[game->map_info.player_y][game->map_info.player_x - 1] = '0';
 		game->map_info.map_blocks[game->map_info.player_y][game->map_info.player_x] = 'P';
 		game->map_info.cnt_move++;
-		temp = ft_itoa(game->map_info.cnt_move);
-		ft_putendl_fd(temp, 1);
+		print_cnt_move(game->map_info.cnt_move);
 	}
 	do_print_map(game, "right");
 }
@@ -101,8 +99,7 @@ void	move_down(t_game *game)
 		game->map_info.map_blocks[game->map_info.player_y - 1][game->map_info.player_x] = '0';
 		game->map_info.map_blocks[game->map_info.player_y][game->map_info.player_x] = 'P';
 		game->map_info.cnt_move++;
-		temp = ft_itoa(game->map_info.cnt_move);
-		ft_putendl_fd(temp, 1);
+		print_cnt_move(game->map_info.cnt_move);
 	}
 	do_print_map(game, "down");
 }
@@ -130,8 +127,7 @@ void	move_left(t_game *game)
 		game->map_info.map_blocks[game->map_info.player_y][game->map_info.player_x + 1] = '0';
 		game->map_info.map_blocks[game->map_info.player_y][game->map_info.player_x] = 'P';
 		game->map_info.cnt_move++;
-		temp = ft_itoa(game->map_info.cnt_move);
-		ft_putendl_fd(temp, 1);
+		print_cnt_move(game->map_info.cnt_move);
 	}
 	do_print_map(game, "left");
 }
