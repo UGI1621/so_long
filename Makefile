@@ -16,13 +16,14 @@ OBJ_DIR = obj
 INC_DIR = include
 MLX_DIR = minilibx
 LIBFT_DIR = libft
+GNL_DIR = get_next_line
 
 # Sources & Objects
-SRCS = $(wildcard $(SRC_DIR)/*.c)
+SRCS = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(GNL_DIR)/*.c)
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
 # Includes & Library flags
-INCLUDES = -I$(INC_DIR) -I$(MLX_DIR) -I$(LIBFT_DIR)
+INCLUDES = -I$(INC_DIR) -I$(MLX_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR)
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_FLAGS = -L$(LIBFT_DIR) -lft

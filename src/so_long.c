@@ -6,26 +6,27 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 00:59:55 by saan              #+#    #+#             */
-/*   Updated: 2025/04/14 18:30:24 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/17 00:34:21 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
-	t_vars	vars;
-	t_imgs	imgs;
+	t_game	game;
 
-	init_user(&vars.user);
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 500, 500, "so_long");
-	init_imgs(&imgs, &vars);
-	mlx_hook(vars.win, 2, X_EVENT_KEY_PRESS, key_press, &vars);
-	mlx_put_image_to_window(vars.mlx, vars.win, imgs.land, 0, 0);
-	mlx_put_image_to_window(vars.mlx, vars.win, imgs.chara, 64, 0);
-	mlx_put_image_to_window(vars.mlx, vars.win, imgs.exit_gate, 128, 0);
-	mlx_loop(vars.mlx);
+	init_map_info(&game.map_info);
+	if (validation_arg(argc, argv))
+		return (0);
+	init_maps(&game.map_info, argv[1]);
+	if (validation_map(&game.map_info))
+		return (0);
+	game.vars.mlx = mlx_init();
+	game.vars.win = mlx_new_window(game.vars.mlx, game.map_info.width, game.map_info.height, "so_long");
+	init_imgs(&game.imgs, &game.vars);
+	print_map(&game);
+	mlx_hook(game.vars.win, 2, X_EVENT_KEY_PRESS, key_press, &game);
+	mlx_loop(game.vars.mlx);
 	return (0);
 }
