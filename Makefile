@@ -7,8 +7,8 @@ NAME = so_long
 # Compiler and flags
 CC = cc
 
-# CFLAGS = -Wall -Wextra -Werror
-CFLAGS =
+CFLAGS = -Wall -Wextra -Werror
+# CFLAGS =
 
 # Directories
 SRC_DIR = src
@@ -25,6 +25,7 @@ OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 # Includes & Library flags
 INCLUDES = -I$(INC_DIR) -I$(MLX_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR)
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+# MLX_FLAGS = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
 

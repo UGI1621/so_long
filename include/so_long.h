@@ -6,7 +6,7 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 19:13:28 by saan              #+#    #+#             */
-/*   Updated: 2025/04/17 01:15:09 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/17 02:38:05 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,8 @@ void	move_left(t_game *game);
 void	clear_game(t_game *game);
 
 int		error_msg_with_free_2_ptr(char *msg, char **ptr);
+
+void	destroy_all(t_game *game);
+int		close_window(t_game *game);
 
 #endif

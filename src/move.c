@@ -6,7 +6,7 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 21:37:50 by saan              #+#    #+#             */
-/*   Updated: 2025/04/17 01:14:44 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/17 02:45:32 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	check_C_and_E(t_game *game)
 
 void	move_up(t_game *game)
 {
-	char	*temp;
-
 	if (game->map_info.player_y == 1)
 	{
 		do_print_map(game, "up");
@@ -50,8 +48,6 @@ void	move_up(t_game *game)
 
 void	move_right(t_game *game)
 {
-	char	*temp;
-
 	if (game->map_info.player_x == game->map_info.x_len - 1)
 	{
 		do_print_map(game, "right");
@@ -78,8 +74,6 @@ void	move_right(t_game *game)
 
 void	move_down(t_game *game)
 {
-	char	*temp;
-
 	if (game->map_info.player_y == game->map_info.y_len - 1)
 	{
 		do_print_map(game, "down");
@@ -106,8 +100,6 @@ void	move_down(t_game *game)
 
 void	move_left(t_game *game)
 {
-	char	*temp;
-
 	if (game->map_info.player_x == 1)
 	{
 		do_print_map(game, "left");

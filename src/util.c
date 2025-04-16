@@ -6,11 +6,27 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 01:34:25 by saan              #+#    #+#             */
-/*   Updated: 2025/04/17 01:14:08 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/17 02:10:55 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	destroy_all(t_game *game)
+{
+	mlx_destroy_window(game->vars.mlx, game->vars.win);
+	mlx_destroy_image(game->vars.mlx, game->imgs.land);
+	mlx_destroy_image(game->vars.mlx, game->imgs.wall);
+	mlx_destroy_image(game->vars.mlx, game->imgs.player_down);
+	mlx_destroy_image(game->vars.mlx, game->imgs.player_left);
+	mlx_destroy_image(game->vars.mlx, game->imgs.player_right);
+	mlx_destroy_image(game->vars.mlx, game->imgs.player_up);
+	mlx_destroy_image(game->vars.mlx, game->imgs.slime);
+	mlx_destroy_image(game->vars.mlx, game->imgs.slime_monster);
+	mlx_destroy_image(game->vars.mlx, game->imgs.chest);
+	mlx_destroy_display(game->vars.mlx);
+	free(game->vars.mlx);
+}
 
 void	print_cnt_move(int cnt)
 {

@@ -6,7 +6,7 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 23:14:02 by saan              #+#    #+#             */
-/*   Updated: 2025/04/17 01:06:01 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/17 02:10:11 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	clear_game(t_game *game)
 {
-	mlx_destroy_window(game->vars.mlx, game->vars.win);
+	destroy_all(game);
 	ft_putendl_fd("clear!!", 1);
 	free_2_ptr(game->map_info.map_blocks);
 	exit(0);

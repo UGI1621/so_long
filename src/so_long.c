@@ -6,7 +6,7 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 00:59:55 by saan              #+#    #+#             */
-/*   Updated: 2025/04/17 01:09:34 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/17 02:46:39 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char *argv[])
 	game.vars.win = mlx_new_window(game.vars.mlx, game.map_info.width, game.map_info.height, "so_long");
 	init_imgs(&game.imgs, &game.vars);
 	print_map(&game);
+	mlx_hook(game.vars.win, 17, 0, close_window, &game);
 	mlx_hook(game.vars.win, 2, X_EVENT_KEY_PRESS, key_press, &game);
 	mlx_loop(game.vars.mlx);
 	return (0);
