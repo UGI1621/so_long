@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   util2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 00:13:58 by saan              #+#    #+#             */
-/*   Updated: 2025/04/18 00:13:25 by saan             ###   ########.fr       */
+/*   Created: 2025/04/18 00:24:41 by saan              #+#    #+#             */
+/*   Updated: 2025/04/18 00:25:54 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	error_msg_with_free_2_ptr(char *msg, char **ptr)
+void	check_items(t_map_info *map_info, int *items)
 {
-	ft_putendl_fd(msg, 1);
-	free_2_ptr(ptr);
-	return (1);
-}
+	int i;
+	int j;
 
-int	error_with_msg(char *msg)
-{
-	ft_putendl_fd(msg, 1);
-	return (1);
-}
-
-int error_with_close(char *msg, int fd)
-{
-	ft_putendl_fd(msg, 1);
-	close(fd);
-	return (1);
+	i = -1;
+	while (map_info->map_blocks[++i])
+	{
+		j = -1;
+		while(map_info->map_blocks[i][++j])
+		{
+			if (map_info->map_blocks[i][j] == 'P')
+				items[0]++;
+			if (map_info->map_blocks[i][j] == 'C')
+				items[1]++;
+			if (map_info->map_blocks[i][j] == 'E')
+				items[2]++;
+		}
+	}
 }

@@ -35,6 +35,7 @@ all: $(NAME)
 # Make libft first
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(MLX_DIR)
 
 # Make target executable
 $(NAME): $(LIBFT) $(OBJS)
@@ -52,6 +53,7 @@ $(OBJ_DIR):
 clean:
 	rm -rf $(OBJ_DIR)
 	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)

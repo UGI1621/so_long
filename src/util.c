@@ -6,7 +6,7 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 01:34:25 by saan              #+#    #+#             */
-/*   Updated: 2025/04/17 02:10:55 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/18 00:10:28 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,25 @@ void	free_2_ptr(char **ptr)
 	while (ptr[++i])
 		free(ptr[i]);
 	free(ptr);
+}
+
+int	gnl_line_count(char *filename)
+{
+	int		fd;
+	int		count;
+	char	*line;
+
+	fd = open(filename, O_RDONLY);
+	count = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		count++;
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (count);
 }
 
 int	is_composed_of(const char *str, const char *str2)

@@ -6,7 +6,7 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 20:07:11 by saan              #+#    #+#             */
-/*   Updated: 2025/04/16 23:48:52 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/18 00:29:06 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	dfs(t_map_info *map_info, int **copied_map, int x, int y)
 	if (map_info->map_blocks[y][x] == 'C')
 		map_info->reach_c++;
 	else if (map_info->map_blocks[y][x] == 'E')
+	{
 		map_info->reach_e++;
+		return ;
+	}
 	dfs(map_info, copied_map, x + 1, y);
 	dfs(map_info, copied_map, x - 1, y);
 	dfs(map_info, copied_map, x, y + 1);
@@ -65,7 +68,7 @@ int	is_reachable(t_map_info *map_info)
 	while (copied_map[++i])
 		free(copied_map[i]);
 	free(copied_map);
-	if (map_info->reach_c && map_info->reach_e)
+	if (map_info->reach_c == map_info->must_reach_c && map_info->reach_e)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 23:37:07 by saan              #+#    #+#             */
-/*   Updated: 2025/04/16 22:35:49 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/17 22:49:25 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@ int	is_berfile(char *filename)
 
 	temp = ft_strrchr(filename, '.');
 	if (!temp)
-	{
-		ft_putendl_fd("not *.ber file", 1);
 		return (0);
-	}
-	if(ft_strncmp(temp, ".ber", 4))
-	{
-		ft_putendl_fd("not *.ber file", 1);
+	if (ft_strncmp(temp, ".ber", 4))
 		return (0);
-	}
+	if (!*(temp - 1))
+		return (0);
+	if (*(temp + 4))
+		return (0);
 	return (1);
 }
 
@@ -40,7 +38,10 @@ int	validation_arg(int argc, char *argv[])
 		return (1);
 	}
 	if (!is_berfile(argv[1]))
+	{
+		ft_putendl_fd("Error : not *.ber file", 1);
 		return (1);
+	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{

@@ -6,7 +6,7 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 01:08:42 by saan              #+#    #+#             */
-/*   Updated: 2025/04/17 02:38:07 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/18 00:28:20 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	init_map_info(t_map_info *map_info)
 	map_info->get_c = 0;
 	map_info->cnt_move = 0;
 	map_info->escape = 0;
+	map_info->must_reach_c = 0;
 }
 
 void	remove_newline(t_map_info *map_info)
@@ -73,20 +74,21 @@ void	remove_newline(t_map_info *map_info)
 	map_info->width = map_info->x_len * PIXEL;
 }
 
-void	init_maps(t_map_info *map_info, char *filename)
+int	init_maps(t_map_info *map_info, char *filename)
 {
 	char	*line;
 	char	checker;
 	int		fd;
 	int		i;
+	int		y_len;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-	{
-		perror("open");
-		exit(1);
-	}
-	map_info->map_blocks = (char **)ft_calloc(11, sizeof(char *));
+		return (error_with_msg("Error : Failed to open the file or the file does not exist."));
+	y_len = gnl_line_count(filename);
+	if (y_len > 11)
+		return (error_with_close("Error : invalid map (Size out of range)", fd));
+	map_info->map_blocks = (char **)ft_calloc(y_len + 1, sizeof(char *));
 	i = -1;
 	line = get_next_line(fd);
 	while (line)
@@ -96,6 +98,7 @@ void	init_maps(t_map_info *map_info, char *filename)
 	}
 	close(fd);
 	if (read(fd, &checker, 1) > 0)
-		error_msg_with_free_2_ptr("Error : GNL", map_info->map_blocks);
+		return (error_msg_with_free_2_ptr("Error : GNL read fail", map_info->map_blocks));
 	remove_newline(map_info);
+	return (0);
 }

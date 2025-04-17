@@ -6,7 +6,7 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 19:13:28 by saan              #+#    #+#             */
-/*   Updated: 2025/04/17 02:38:05 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/18 00:27:43 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct	s_map_info {
 	int		height;
 	int		player_x;
 	int		player_y;
+	int		must_reach_c;
 	int		reach_c;
 	int		reach_e;
 	int		get_c;
@@ -85,7 +86,9 @@ typedef	struct	s_game {
 void	free_2_ptr(char **ptr);
 
 int		is_reachable(t_map_info *map_info);
+void	check_items(t_map_info *map_info, int *items);
 
+int		gnl_line_count(char *filename);
 int		is_composed_of(const char *str, const char *str2);
 int		is_berfile(char *filename);
 
@@ -94,7 +97,7 @@ int		validation_map(t_map_info *map_info);
 
 void	init_map_info(t_map_info *map_info);
 void	init_imgs(t_imgs *imgs, t_vars *vars);
-void	init_maps(t_map_info *map_info, char *filename);
+int		init_maps(t_map_info *map_info, char *filename);
 
 void	do_print_map(t_game *game, char *input);
 void	print_map(t_game *game);
@@ -111,6 +114,8 @@ void	move_left(t_game *game);
 
 void	clear_game(t_game *game);
 
+int		error_with_msg(char *msg);
+int		error_with_close(char *msg, int fd);
 int		error_msg_with_free_2_ptr(char *msg, char **ptr);
 
 void	destroy_all(t_game *game);

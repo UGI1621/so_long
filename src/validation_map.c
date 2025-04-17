@@ -6,7 +6,7 @@
 /*   By: saan <saan@student.42gyeongsan.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 20:56:15 by saan              #+#    #+#             */
-/*   Updated: 2025/04/17 00:04:50 by saan             ###   ########.fr       */
+/*   Updated: 2025/04/18 00:28:25 by saan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,12 @@
 int	is_valid_item(t_map_info *map_info)
 {
 	int	items[3];
-	int i;
-	int j;
 
 	items[0] = 0;
 	items[1] = 0;
 	items[2] = 0;
-	i = -1;
-	while (map_info->map_blocks[++i])
-	{
-		j = -1;
-		while(map_info->map_blocks[i][++j])
-		{
-			if (map_info->map_blocks[i][j] == 'P')
-				items[0]++;
-			if (map_info->map_blocks[i][j] == 'C')
-				items[1]++;
-			if (map_info->map_blocks[i][j] == 'E')
-				items[2]++;
-		}
-	}
+	check_items(map_info, items);
+	map_info->must_reach_c = items[1];
 	if (items[0] == 1 && items[1] >= 1 && items[2] == 1)
 		return (1);
 	else
@@ -95,7 +81,7 @@ int	is_valid_field(t_map_info *map_info)
 int	validation_map(t_map_info *map_info)
 {
 	if (!map_info->map_blocks || !map_info->map_blocks[0])
-    	return (1);
+		return (error_msg_with_free_2_ptr("Error : invalid map (Empty map)", map_info->map_blocks));
 	if (map_info->height > PIXEL * 10 || map_info->width > PIXEL * 18)
 		return (error_msg_with_free_2_ptr("Error : invalid map (Size out of range)", map_info->map_blocks));
 	if (!is_valid_field(map_info))
